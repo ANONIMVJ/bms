@@ -3,7 +3,6 @@ import { PaymentService } from './payment.service';
 import { PaymentController } from './payment.controller';
 import { SequelizeModule } from '@nestjs/sequelize';
 import { Payment } from './models/payment.model';
-import { MyLoggerService } from '../logs/logger_service';
 
 @Module({
   imports:[SequelizeModule.forFeature([Payment])],

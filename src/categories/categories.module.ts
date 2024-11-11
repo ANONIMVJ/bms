@@ -3,7 +3,6 @@ import { CategoriesService } from './categories.service';
 import { CategoriesController } from './categories.controller';
 import { SequelizeModule } from '@nestjs/sequelize';
 import { Category } from './Models/category.model';
-import { MyLoggerService } from '../logs/logger_service';
 
 @Module({
   imports:[SequelizeModule.forFeature([Category])],

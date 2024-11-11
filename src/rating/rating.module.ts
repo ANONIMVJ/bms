@@ -3,7 +3,6 @@ import { RatingService } from './rating.service';
 import { RatingController } from './rating.controller';
 import { SequelizeModule } from '@nestjs/sequelize';
 import { Rating } from './model/rating.model';
-import { MyLoggerService } from '../logs/logger_service';
 
 @Module({
   imports:[SequelizeModule.forFeature([Rating])],
