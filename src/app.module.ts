@@ -39,8 +39,6 @@ import { OrderStatusModule } from './order_status/order_status.module';
 import { OrderStatus } from './order_status/models/order_status.model';
 import { DeliverStatusModule } from './deliver_status/deliver_status.module';
 import { DeliverStatus } from './deliver_status/models/deliver_status.model';
-import { LoggerModule } from './logs/logger_module';
-import { MyLoggerService } from './logs/logger_service';
 import { ConfigModule } from '@nestjs/config';
 
 @Module({
@@ -102,15 +100,6 @@ import { ConfigModule } from '@nestjs/config';
     PaymentMethodModule,
     OrderStatusModule,
     DeliverStatusModule,
-    LoggerModule,
   ],
-  providers: [MyLoggerService],
-  controllers: [],
 })
-export class AppModule {
-  constructor(private readonly logger: MyLoggerService) {}
-
-  onModuleInit() {
-    this.logger.log('The application has started working...');
-  }
-}
+export class AppModule {}
