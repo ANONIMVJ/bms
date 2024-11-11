@@ -5,7 +5,7 @@ import { SequelizeModule } from '@nestjs/sequelize';
 import { Admin } from './models/admin.model';
 import { JwtModule } from '@nestjs/jwt';
 import { UsersModule } from '../users/users.module';
-import { MyLoggerService } from '../logs/logger_service';
+
 
 @Module({
   imports:[SequelizeModule.forFeature([Admin]), UsersModule,
