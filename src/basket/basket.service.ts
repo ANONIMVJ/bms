@@ -3,7 +3,6 @@ import { CreateBasketDto } from './dto/create-basket.dto';
 import { UpdateBasketDto } from './dto/update-basket.dto';
 import { InjectModel } from '@nestjs/sequelize';
 import { Basket } from './model/basket.model';
-import { MyLoggerService } from '../logs/logger_service';
 
 @Injectable()
 export class BasketService {
