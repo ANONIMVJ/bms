@@ -1,8 +1,10 @@
-import { Controller, Get, Post, Body,Param, Delete, Put } from '@nestjs/common';
+import { Controller, Get, Post, Body,Param, Delete, Put, UseGuards } from '@nestjs/common';
 import { DelivererService } from './deliverer.service';
 import { CreateDelivererDto } from './dto/create-deliverer.dto';
 import { UpdateDelivererDto } from './dto/update-deliverer.dto';
 import { ApiOperation, ApiTags } from '@nestjs/swagger';
+import { JwtAdminGuard } from '../guards/jwt-admin.guard';
+import { Roles } from '../decorator/roles-auth.decorator';
 
 @ApiTags("Deliverer")
 @Controller('deliverer')
@@ -14,6 +16,8 @@ export class DelivererController {
       summary: "Add deliverer"
     }
   )
+  @Roles("ADMIN")
+  @UseGuards(JwtAdminGuard)
   @Post()
   create(@Body() createDelivererDto: CreateDelivererDto) {
     return this.delivererService.create(createDelivererDto);
@@ -44,6 +48,8 @@ export class DelivererController {
       summary: "Change deliverer by id"
     }
   )
+  @Roles("ADMIN")
+  @UseGuards(JwtAdminGuard)
   @Put(':id')
   update(@Param('id') id: string, @Body() updateDelivererDto: UpdateDelivererDto) {
     return this.delivererService.update(+id, updateDelivererDto);
@@ -54,6 +60,8 @@ export class DelivererController {
       summary: "Remove deliverer by id"
     }
   )
+  @Roles("ADMIN")
+  @UseGuards(JwtAdminGuard)
   @Delete(':id')
   remove(@Param('id') id: string) {
     return this.delivererService.remove(+id);

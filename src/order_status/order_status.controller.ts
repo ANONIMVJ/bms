@@ -24,7 +24,7 @@ export class OrderStatusController {
       summary: "List of all order status"
     }
   )
-  @Get()
+  @Get('all')
   findAll() {
     return this.orderStatusService.findAll();
   }

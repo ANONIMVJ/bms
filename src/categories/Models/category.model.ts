@@ -3,7 +3,6 @@ import { BelongsTo, Column, DataType, ForeignKey, Model, Table } from "sequelize
 interface CategoryAttr{
     category_name:string,
     parentId:number,
-    warehouseId:number,
 }
 
 @Table({tableName:"category",timestamps:false})
@@ -33,9 +32,4 @@ export class Category extends Model<Category, CategoryAttr>{
     @BelongsTo(()=> Category)
     category:Category
 
-    @Column(
-    {
-        type:DataType.INTEGER,
-    })
-    warehouseId:number
 }

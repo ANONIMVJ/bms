@@ -24,7 +24,7 @@ export class BasketController {
       summary: "List of all basket"
     }
   )
-  @Get()
+  @Get('all')
   findAll() {
     return this.basketService.findAll();
   }

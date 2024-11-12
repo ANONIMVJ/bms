@@ -14,23 +14,24 @@ export class UsersService {
     private readonly rolesService: RolesService
   ) {}
   async create(createUserDto: CreateUserDto) {
-    const newUser = await this.UsersModule.create(createUserDto)
+    const exstuser = await this.UsersModule.findOne({where:{email: createUserDto.email}})
+    if(exstuser){
+      throw new BadRequestException("this user old exsts...")
+    }
     const role = await this.rolesService.findRoleByValue(createUserDto.role_value)
-
-    if(!role)
-      throw new BadRequestException("Role not found...");
-    
+    if(!role) throw new BadRequestException("Role not found...");
+    const newUser = await this.UsersModule.create(createUserDto)
 
     newUser.roles = [role];
     return newUser
   }
 
   findAll() {
-    return this.UsersModule.findAll({include:{all:true}})
+    return this.UsersModule.findAll({include:{all : true}})
   }
 
   findUserByEmail(email:string){
-    return this.UsersModule.findOne({where:{email}, include:{all:true,attributes:["value"],through:{attributes:[]}}})
+    return this.UsersModule.findOne({where:{email}})
   }
 
   findOne(id: number) {

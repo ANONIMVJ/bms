@@ -22,13 +22,4 @@ export class CreateCategoryDto {
     @IsNotEmpty()
     parentId:number
 
-    @ApiProperty(
-        {
-            example: 2,
-            description: "Warehouse id"
-        }
-    )
-    @IsNumber()
-    @IsNotEmpty()
-    warehouseId:number
 }

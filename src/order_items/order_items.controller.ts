@@ -24,7 +24,7 @@ export class OrderItemsController {
       summary: "List of all order items"
     }
   )
-  @Get()
+  @Get('all')
   findAll() {
     return this.orderItemsService.findAll();
   }

@@ -2,7 +2,7 @@ import { ApiProperty } from "@nestjs/swagger"
 import { Column, DataType, Model, Table } from "sequelize-typescript"
 
 interface AdminCreationAttr{
-    username:string,
+    name:string,
     login:string,
     hashed_password:string,
     is_active:boolean,

@@ -24,7 +24,7 @@ export class PaymentMethodController {
       summary: "List of all payment method"
     }
   )
-  @Get()
+  @Get('all')
   findAll() {
     return this.paymentMethodService.findAll();
   }

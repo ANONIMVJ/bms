@@ -1,8 +1,10 @@
-import { Controller, Get, Post, Body, Param, Delete, Put } from '@nestjs/common';
+import { Controller, Get, Post, Body, Param, Delete, Put, UseGuards } from '@nestjs/common';
 import { CategoriesService } from './categories.service';
 import { CreateCategoryDto } from './dto/create-category.dto';
 import { UpdateCategoryDto } from './dto/update-category.dto';
 import { ApiOperation, ApiTags } from '@nestjs/swagger';
+import { JwtAdminGuard } from '../guards/jwt-admin.guard';
+import { Roles } from '../decorator/roles-auth.decorator';
 
 @ApiTags("Categories")
 @Controller('categories')
@@ -14,6 +16,8 @@ export class CategoriesController {
       summary: "add category"
     }
   )
+  @Roles("ADMIN")
+  @UseGuards(JwtAdminGuard)
   @Post()
   create(@Body() createCategoryDto: CreateCategoryDto) {
     return this.categoriesService.create(createCategoryDto);
@@ -44,6 +48,8 @@ export class CategoriesController {
       summary: "Change category by Id"
     }
   )
+  @Roles("ADMIN")
+  @UseGuards(JwtAdminGuard)
   @Put(':id')
   update(@Param('id') id: string, @Body() updateCategoryDto: UpdateCategoryDto) {
     return this.categoriesService.update(+id, updateCategoryDto);
@@ -55,6 +61,8 @@ export class CategoriesController {
       summary: "Remove category by Id"
     }
   )
+  @Roles("ADMIN")
+  @UseGuards(JwtAdminGuard)
   @Delete(':id')
   remove(@Param('id') id: string) {
     return this.categoriesService.remove(+id);

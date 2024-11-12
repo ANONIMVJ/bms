@@ -18,7 +18,6 @@ export class CreatePaymentDto {
             description: "where the payment date is displayed"
         }
     )
-    @IsDateString()
     payment_date:Date
     
     @ApiProperty(

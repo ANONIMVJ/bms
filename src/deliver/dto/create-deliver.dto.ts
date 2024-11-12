@@ -28,7 +28,6 @@ export class CreateDeliverDto {
             description: "where the deliver date is displayed"
         }
     )
-    @IsDateString()
     deliver_date:Date
 
     @ApiProperty(

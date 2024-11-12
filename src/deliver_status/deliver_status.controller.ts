@@ -24,7 +24,7 @@ export class DeliverStatusController {
       summary: "List of all deliver status"
     }
   )
-  @Get()
+  @Get('all')
   findAll() {
     return this.deliverStatusService.findAll();
   }

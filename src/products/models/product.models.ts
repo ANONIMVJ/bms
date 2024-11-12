@@ -134,7 +134,7 @@ export class Product extends Model<Product, ProductAttr>{
     ratings: Rating[]
 
     @HasMany(()=> Review)
-    bookings: Review[]
+    reviews: Review[]
 
     @HasMany(()=> Warehouse)
     warehouses: Warehouse[]

@@ -40,7 +40,6 @@ export class JwtAuthGuard implements CanActivate{
             
         }
         req.user = payload
-        console.log(req);
         
         return true
     }

@@ -18,7 +18,6 @@ export class CreateOrderDto {
             description: "where the order date is displayed"
         }
     )
-    @IsDateString()
     order_date:Date
 
     @ApiProperty(
